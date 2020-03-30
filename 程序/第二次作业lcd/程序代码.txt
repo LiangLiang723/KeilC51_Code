@@ -1,0 +1,102 @@
+#include <reg52.h>
+#include <intrins.h>
+#define uchar unsigned char
+#define uint unsigned int
+#define out P0
+sbit RS=P2^0;
+sbit RW=P2^1;
+sbit E=P2^2;
+uchar a[11]="0123456789";
+void lcd_initial(void);
+void cheek_busy(void);
+void write_command(uchar com);
+void write_data(uchar dat);
+void string(uchar ad,uchar *s);
+void delay(uint);
+void main(void)
+{
+uchar i=0,j=0;
+lcd_initial();
+string(0x80,"counl:");
+string(0xc0,"S1:+ S2:- S3:r");
+while(1)
+{
+if(P1==0xfe&&i!=9)
+i++;
+if(P1==0xfd&&i!=0)
+i--;
+if(P1==0xfb)
+i=0;
+if(P1==0xfe&&i==9)
+j++,i=0;
+if(P1==0xfd&&i==0)
+j--,i=9;
+write_command(0x86);
+write_data(a[j]);
+write_command(0x87);
+write_data(a[i]); 
+}}
+void delay(uint j)
+{
+uchar i=250;
+for(;j>0;j--)
+{
+while(--i);
+i=249;
+while(--i);
+i=250;
+}
+}
+void check_busy(void)
+{
+uchar dt;
+do{
+dt=0xff;
+E=0;
+RS=0;
+RW=1;
+E=1;
+dt=out;
+}while(dt&0x80);
+}
+void write_command(uchar com)
+{
+cheek_busy();
+E=0;
+RS=0;
+RW=0;
+out=com;
+E=1;
+_nop_();
+E=0;
+delay(1);
+}
+void write_data(uchar dat)
+{
+cheek_busy();
+E=0;
+RS=1;
+RS=0;
+out=dat;
+E=1;
+_nop_();
+E=0;
+delay(1);
+}
+void lcd_initial(void)
+{
+write_command(0x38);
+write_command(0x0c);
+write_command(0x06);
+write_command(0x01);
+delay(1);
+}
+void string(uchar ad,uchar *s)
+{
+ write_command(ad);
+ while(*s>0)
+ {
+ write_data(*s++);
+ delay(100);
+ }
+}

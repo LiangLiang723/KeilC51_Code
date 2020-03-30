@@ -1,0 +1,222 @@
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 09:48:25 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: E:\KeilC51\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          #include<stdlib.h>
+   4          #define uchar unsigned char
+   5          #define uint unsigned int
+   6          sbit DQ=P3^7;
+   7          sbit en=P0^5;
+   8          sbit rw=P0^6;
+   9          sbit rs=P0^7;
+  10          bit fg=1;
+  11          uchar L;
+  12          void delay(uint t)       
+  13          {  uint i,j;                                    
+  14   1         for(i=0;i<t;i++)
+  15   1            for(j=0;j<123;j++); }
+  16          
+  17          
+  18           void delay1(uint t)
+  19           { 
+  20   1       uint i;
+  21   1        for(i=0;i<t;i++);
+  22   1       }
+  23           void check_busy(void)
+  24          {  uchar dt;
+  25   1         do{  dt=0xff;
+  26   2              en=0;  rs=0;  rw=1;  en=1;  
+  27   2                      dt=P2;  } while(dt&0x80);
+  28   1         en=0;   }
+  29          
+  30          
+  31          void write_command(uchar com)
+  32          {  check_busy();
+  33   1         en=0;  rs=0;  rw=0;  
+  34   1         P2=com;
+  35   1         en=1;
+  36   1         _nop_();
+  37   1         en=0;
+  38   1         delay(1);   }
+  39          
+  40          void lcd_initial(void)
+  41          { write_command(0x38);
+  42   1        write_command(0x0c);
+  43   1        write_command(0x06);
+  44   1        write_command(0x01);
+  45   1        delay(1);              }
+  46          
+  47          
+  48          void write_data(uchar dat)                                                                                               
+  49          {  check_busy();
+  50   1         en=0;  rs=1;  rw=0;  
+  51   1         P2=dat;
+  52   1         en=1;
+  53   1         _nop_();
+  54   1         en=0;
+  55   1         delay(1);   }
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 09:48:25 PAGE 2   
+
+  56          void string(uchar position, uchar *s)
+  57          {  write_command(position);
+  58   1         while(*s>0)
+  59   1         {  write_data(*s++);
+  60   2            delay(1);        
+  61   2                                    }    }
+  62          void write_sfm1(uchar add,uchar dat)
+  63          {
+  64   1              write_command(0x80+add);
+  65   1              write_data(0x30+dat/100);
+  66   1              write_data(0x30+dat/10%10);
+  67   1              write_data(0x30+dat%10);
+  68   1              }
+  69                  void write_sfm(uchar add,uchar dat)
+  70          {
+  71   1              write_command(0x80+add);
+  72   1              write_data(0x30+dat);;
+  73   1              }
+  74          unsigned char tempL=0;          
+  75          unsigned char tempH=0;   
+  76          unsigned int sdata,sdata1,sdata2;               
+  77          unsigned char xiaoshu1;         
+  78          unsigned char xiaoshu2;         
+  79          unsigned char xiaoshu;
+  80          uint num1=0,num2=0;
+  81          uint MAX=25,MIN=15;     
+  82                          
+  83           void Init_DS18B20(void) 
+  84          {
+  85   1              unsigned char x=0;
+  86   1              DQ=1;                                   
+  87   1              delay1(8);                              
+  88   1              DQ=0;                                   
+  89   1              delay1(80);                              
+  90   1              DQ=1;                                   
+  91   1              delay1(5);                      
+  92   1              x=DQ;                                   
+  93   1              delay1(20); 
+  94   1      }
+  95          
+  96          
+  97          ReadOneChar(void)                       
+  98          {
+  99   1              unsigned char i=0;              
+ 100   1              unsigned char dat=0; 
+ 101   1              for (i=8;i>0;i--)               
+ 102   1              {
+ 103   2                      DQ=1; 
+ 104   2                      delay1(1); 
+ 105   2                      DQ=0;
+ 106   2                      dat>>=1; 
+ 107   2                      DQ=1; 
+ 108   2                      if(DQ) 
+ 109   2                      dat|=0x80; 
+ 110   2                      delay1(4);
+ 111   2              } 
+ 112   1              return(dat);
+ 113   1      }
+ 114          
+ 115          void WriteOneChar(unsigned char dat) 
+ 116          { 
+ 117   1              unsigned char i=0;              
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 09:48:25 PAGE 3   
+
+ 118   1              for(i=8;i>0;i--)                
+ 119   1              {
+ 120   2                      DQ=0;                           
+ 121   2                      DQ=dat&0x01; 
+ 122   2                      delay1(5); 
+ 123   2                      DQ=1; 
+ 124   2                      dat>>=1;
+ 125   2              } 
+ 126   1              delay1(4);
+ 127   1      }
+ 128          void ReadTemperature(void) 
+ 129          { 
+ 130   1              Init_DS18B20();                                         
+ 131   1              WriteOneChar(0xcc);                     
+ 132   1              WriteOneChar(0x44);                     
+ 133   1              delay(125);                                             
+ 134   1              Init_DS18B20();                                 
+ 135   1              WriteOneChar(0xcc);                             
+ 136   1              WriteOneChar(0xbe);             
+ 137   1              tempL=ReadOneChar();                    
+ 138   1              tempH=ReadOneChar();                    
+ 139   1              if(tempH>0x7f)                                  
+ 140   1              {
+ 141   2                      tempL=~tempL;                                   
+ 142   2                      tempH=~tempH+1;       
+ 143   2                      fg=0;                                                   
+ 144   2              }
+ 145   1              sdata = tempL/16+tempH*16;      
+ 146   1              sdata1 = sdata/10;
+ 147   1              sdata2 = sdata%10;
+ 148   1              xiaoshu1 = (tempL&0x0f)*10/16;  
+ 149   1              xiaoshu2 = (tempL&0x0f)*100/16%10;      
+ 150   1              xiaoshu=xiaoshu1*10+xiaoshu2;
+ 151   1      }
+ 152          void send(uchar dat)
+ 153          {
+ 154   1      SBUF=dat;
+ 155   1      while(TI=0);
+*** WARNING C276 IN LINE 155 OF MAIN.C: constant in condition expression
+ 156   1      TI=0;
+ 157   1      }
+ 158          uchar receice(void)
+ 159          {
+ 160   1      uchar dat;
+ 161   1      while(RI==0);
+ 162   1      RI=0;
+ 163   1      dat=SBUF;
+ 164   1      return dat;
+ 165   1      }
+ 166          void main()
+ 167            { lcd_initial();
+ 168   1       TMOD=0x20;
+ 169   1       TH1=0xf4;
+ 170   1       TL1=0xf4;
+ 171   1       PCON=0;
+ 172   1       SCON=0x50;
+ 173   1       TR1=1;
+ 174   1      while(1)
+ 175   1      {           ReadTemperature();
+ 176   2                  send(100+sdata);
+ 177   2                              delay(5);
+ 178   2                              send(200+xiaoshu);
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 09:48:25 PAGE 4   
+
+ 179   2                              delay(5);
+ 180   2                              L=receice();
+ 181   2                  write_sfm1(0x42,L);
+ 182   2                              string(0x80,"T");
+ 183   2                              string(0x81,":");string(0xc1,":");      string(0xc0,"L");
+ 184   2                              write_command(0x82);    
+ 185   2                              write_data(sdata1+0x30);         
+ 186   2                              write_data(sdata2+0x30);
+ 187   2                              string(0x84,".");
+ 188   2                              write_command(0x85);  
+ 189   2                              write_data(xiaoshu1+0x30);
+ 190   2                              write_data(xiaoshu2+0x30);
+ 191   2                                       }
+ 192   1                                                                                                                 }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    702    ----
+   CONSTANT SIZE    =      8    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     20       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

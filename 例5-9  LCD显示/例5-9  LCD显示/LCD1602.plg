@@ -1,0 +1,67 @@
+compiling C程序-LCD1602IO方式.C...
+C51 COMPILER V8.02 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2006
+C51 FATAL-ERROR -
+  ACTION:  PARSING INVOKE-/#PRAGMA-LINE
+  LINE:    C:\Keil\C51\BIN\C51.EXE D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C PRINT(.\C程序-LCD1602IO方式.lst) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.obj)
+  ERROR:   ')' AFTER PARAMETER EXPECTED
+C51 TERMINATED.
+D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C - 0 Error(s), 0 Warning(s).
+compiling C程序-LCD1602IO方式.C...
+C51 COMPILER V8.02 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2006
+C51 FATAL-ERROR -
+  ACTION:  PARSING INVOKE-/#PRAGMA-LINE
+  LINE:    C:\Keil\C51\BIN\C51.EXE D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C PRINT(.\C程序-LCD1602IO方式.lst) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.obj)
+  ERROR:   ')' AFTER PARAMETER EXPECTED
+C51 TERMINATED.
+D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+A51 MACRO ASSEMBLER V8.00 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2005
+"C:\Keil\C51\BIN\A51.EXE" "STARTUP.A51" SET (SMALL) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP
+A51 FATAL ERROR -
+  LINE:       C:\Keil\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP#
+  ERROR:      EXPECTED DELIMITER ')' AFTER ARGUMENT
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+A51 MACRO ASSEMBLER V8.00 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2005
+"C:\Keil\C51\BIN\A51.EXE" "STARTUP.A51" SET (SMALL) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP
+A51 FATAL ERROR -
+  LINE:       C:\Keil\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP#
+  ERROR:      EXPECTED DELIMITER ')' AFTER ARGUMENT
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+A51 MACRO ASSEMBLER V8.00 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2005
+"C:\Keil\C51\BIN\A51.EXE" "STARTUP.A51" SET (SMALL) DEBUG OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP
+A51 FATAL ERROR -
+  LINE:       C:\Keil\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) DEBUG OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP#
+  ERROR:      EXPECTED DELIMITER ')' AFTER ARGUMENT
+A51 TERMINATED.
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+A51 MACRO ASSEMBLER V8.00 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2005
+"C:\Keil\C51\BIN\A51.EXE" "STARTUP.A51" SET (SMALL) DEBUG OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP
+A51 FATAL ERROR -
+  LINE:       C:\Keil\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) DEBUG OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\STARTUP.obj) EP#
+  ERROR:      EXPECTED DELIMITER ')' AFTER ARGUMENT
+A51 TERMINATED.
+Target not created
+compiling C程序-LCD1602IO方式.C...
+C51 COMPILER V8.02 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2006
+C51 FATAL-ERROR -
+  ACTION:  PARSING INVOKE-/#PRAGMA-LINE
+  LINE:    C:\Keil\C51\BIN\C51.EXE D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C BROWSE DEBUG OBJECTEXTEND PRINT(.\C程序-LCD1602IO方式.lst) OBJECT(D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.obj)
+  ERROR:   ')' AFTER PARAMETER EXPECTED
+C51 TERMINATED.
+D:\！！书稿\书稿(高教社单片机(C51+Proteus)\案例文件\例5-9  LCD显示\C程序-LCD1602IO方式.C - 0 Error(s), 0 Warning(s).

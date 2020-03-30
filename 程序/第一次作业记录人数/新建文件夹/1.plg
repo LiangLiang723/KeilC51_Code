@@ -1,0 +1,737 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\单片机\程序\第一次作业记录人数\新建文件夹\1.uvproj
+Project File Date:  04/01/2019
+
+<h2>Output:</h2>
+compiling 9.c...
+9.C(6): error C202: 'p2': undefined identifier
+9.C(7): error C202: 'p2': undefined identifier
+9.C(8): error C202: 'p2': undefined identifier
+9.C(12): error C136: 'write_command': 'void' on variable
+9.C(12): error C129: missing ';' before '{'
+9.c - 5 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(12): error C136: 'write_command': 'void' on variable
+9.C(12): error C129: missing ';' before '{'
+9.c - 2 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(12): error C136: 'write_command': 'void' on variable
+9.C(12): error C129: missing ';' before '{'
+9.c - 2 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(13): error C136: 'write_data': 'void' on variable
+9.C(13): error C129: missing ';' before '{'
+9.c - 2 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+9.C(13): error C136: 'write_data': 'void' on variable
+9.C(13): error C129: missing ';' before '{'
+目标未创建
+compiling 9.c...
+9.C(14): error C136: 'string': 'void' on variable
+9.C(14): error C129: missing ';' before '{'
+9.c - 2 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(35): error C141: syntax error near 'write_data'
+9.C(35): error C141: syntax error near 'a'
+9.C(48): error C141: syntax error near 'void'
+9.c - 3 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(35): error C141: syntax error near 'write_data'
+9.C(36): error C141: syntax error near 'write_command'
+9.C(37): error C141: syntax error near 'write_data'
+9.C(37): error C202: 'I': undefined identifier
+9.C(38): error C141: syntax error near '}'
+9.C(55): error C202: 'E': undefined identifier
+9.C(58): error C202: 'E': undefined identifier
+9.C(61): error C141: syntax error near '}', expected ';'
+9.C(62): error C136: 'write_command': 'void' on variable
+9.C(62): error C129: missing ';' before '{'
+9.c - 10 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(35): error C141: syntax error near 'write_data'
+9.C(36): error C141: syntax error near 'write_command'
+9.C(37): error C141: syntax error near 'write_data'
+9.C(38): error C141: syntax error near '}'
+9.C(55): error C202: 'E': undefined identifier
+9.C(58): error C202: 'E': undefined identifier
+9.C(61): error C141: syntax error near '}', expected ';'
+9.C(62): error C136: 'write_command': 'void' on variable
+9.C(62): error C129: missing ';' before '{'
+9.c - 9 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(55): error C202: 'E': undefined identifier
+9.C(58): error C202: 'E': undefined identifier
+9.C(61): error C141: syntax error near '}', expected ';'
+9.C(62): error C136: 'write_command': 'void' on variable
+9.C(62): error C129: missing ';' before '{'
+9.c - 5 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+9.C(55): error C202: 'E': undefined identifier
+9.C(58): error C202: 'E': undefined identifier
+9.C(65): error C202: 'E': undefined identifier
+9.C(68): error C141: syntax error near ':'
+9.C(69): error C202: 'E': undefined identifier
+9.C(71): error C202: 'E': undefined identifier
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+目标未创建
+Build target '目标 1'
+compiling 9.c...
+9.C(68): error C141: syntax error near ':'
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(81): error C231: 'E': redefinition
+9.C(81): error C231: 'E': redefinition
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(83): error C231: 'E': redefinition
+9.C(83): error C231: 'E': redefinition
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+目标未创建
+compiling 9.c...
+9.C(68): error C141: syntax error near ':'
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(81): error C231: 'E': redefinition
+9.C(81): error C231: 'E': redefinition
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(83): error C231: 'E': redefinition
+9.C(83): error C231: 'E': redefinition
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+9.c - 23 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(68): error C141: syntax error near ':'
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(79): error C231: 'RW': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(81): error C231: 'E': redefinition
+9.C(81): error C231: 'E': redefinition
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(83): error C231: 'E': redefinition
+9.C(83): error C231: 'E': redefinition
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+9.c - 23 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+9.C(68): error C141: syntax error near ':'
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C279: 'RS': multiple initialization
+9.C(79): error C231: 'RS': redefinition
+9.C(79): error C231: 'RS': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(81): error C231: 'E': redefinition
+9.C(81): error C231: 'E': redefinition
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(83): error C231: 'E': redefinition
+9.C(83): error C231: 'E': redefinition
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+目标未创建
+Build target '目标 1'
+compiling 9.c...
+9.C(75): error C141: syntax error near '{'
+9.C(76): error C231: 'cheek_busy': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(77): error C231: 'E': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(78): error C231: 'RS': redefinition
+9.C(79): error C279: 'RS': multiple initialization
+9.C(79): error C231: 'RS': redefinition
+9.C(79): error C231: 'RS': redefinition
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C202: 'dat': undefined identifier
+9.C(80): error C231: 'P0': redefinition
+9.C(80): error C141: syntax error near ':'
+9.C(81): error C279: 'E': multiple initialization
+9.C(81): error C231: 'E': redefinition
+9.C(81): error C231: 'E': redefinition
+9.C(82): error C231: '__nop_': redefinition
+9.C(83): error C279: 'E': multiple initialization
+9.C(83): error C231: 'E': redefinition
+9.C(83): error C231: 'E': redefinition
+9.C(84): error C141: syntax error near '1'
+9.C(84): error C231: '_delay': redefinition
+9.C(85): error C141: syntax error near '}'
+目标未创建
+Build target '目标 1'
+compiling 9.c...
+9.C(80): error C141: syntax error near ':'
+目标未创建
+Build target '目标 1'
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.C(39): error C141: syntax error near 'void'
+9.c - 1 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+9.C(39): error C141: syntax error near 'void'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(39): error C141: syntax error near 'void'
+目标未创建
+compiling 9.c...
+9.C(39): error C141: syntax error near 'void'
+9.c - 1 Error(s), 0 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0118H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0132H
+Program Size: data=26.0 xdata=0 code=405
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=498
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(62): error C141: syntax error near '}'
+目标未创建
+compiling 9.c...
+9.C(62): error C141: syntax error near '}'
+9.c - 1 Error(s), 0 Warning(s).
+compiling 9.c...
+9.c - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CHECK_BUSY?9
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 0175H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  CHEEK_BUSY
+    MODULE:  9.obj (9)
+    ADDRESS: 018FH
+Program Size: data=26.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 4 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=560
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=546
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=546
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(83): warning C206: 'lcd_initial': missing function-prototype
+linking...
+Program Size: data=36.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(83): warning C206: 'lcd_initial': missing function-prototype
+linking...
+Program Size: data=36.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target '目标 1'
+linking...
+Program Size: data=36.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+compiling 9.c...
+9.C(83): warning C206: 'lcd_initial': missing function-prototype
+9.c - 0 Error(s), 1 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(83): warning C206: 'lcd_initial': missing function-prototype
+linking...
+Program Size: data=36.0 xdata=0 code=500
+creating hex file from "1"...
+"1" - 0 Error(s), 1 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=546
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=408
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=408
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=546
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=546
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=501
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=501
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(92): error C141: syntax error near ';'
+9.C(94): error C141: syntax error near ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(92): error C141: syntax error near ';'
+9.C(94): error C141: syntax error near ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(92): error C141: syntax error near ';'
+9.C(94): error C141: syntax error near ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(92): error C141: syntax error near ';'
+9.C(93): error C141: syntax error near 'while'
+9.C(94): error C141: syntax error near ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+9.C(92): error C141: syntax error near ';'
+9.C(92): error C141: syntax error near ')'
+9.C(93): error C141: syntax error near ')'
+目标未创建
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling 9.c...
+linking...
+Program Size: data=36.0 xdata=0 code=525
+creating hex file from "1"...
+"1" - 0 Error(s), 0 Warning(s).

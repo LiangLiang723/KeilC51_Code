@@ -1,0 +1,122 @@
+C51 COMPILER V9.01   1213123123                                                            05/23/2019 18:36:38 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 1213123123
+OBJECT MODULE PLACED IN 1213123123.OBJ
+COMPILER INVOKED BY: E:\KeilC51\C51\BIN\C51.EXE 1213123123.C BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+*** WARNING C500 IN LINE 1 OF 1213123123.C: LICENSE ERROR (R208: RENEW LICENSE ID CODE (LIC))
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          uchar second=30,minute=23,num=0;
+   6          
+   7          sbit en=P2^2;
+   8          sbit rw=P2^1;
+   9          sbit rs=P2^0;
+  10          sbit P23=P2^3;
+  11          sbit P24=P2^4;
+  12          sbit P25=P2^5;
+  13           
+  14          void delay(uint t)       
+  15          {  uint i,j;
+  16   1         for(i=0;i<t;i++)
+  17   1            for(j=0;j<123;j++); }
+  18          
+  19          void check_busy(void)
+  20          {  uchar dt;
+  21   1         do{  dt=0xff;
+  22   2              en=0;  rs=0;  rw=1;  en=1;  
+  23   2                      dt=P0;  } while(dt&0x80);
+  24   1         en=0;   }
+  25          
+  26          void write_command(uchar com)
+  27          {  check_busy();
+  28   1         en=0;  rs=0;  rw=0;  
+  29   1         P0=com;
+  30   1         en=1;
+  31   1         _nop_();
+  32   1         en=0;
+  33   1         delay(1);   }
+  34          
+  35          void lcd_initial(void)
+  36          { write_command(0x38);
+  37   1        write_command(0x0c);
+  38   1        write_command(0x06);
+  39   1        write_command(0x01);
+  40   1        delay(1);              }
+  41          
+  42          
+  43          void write_data(uchar dat)
+  44          {  check_busy();
+  45   1         en=0;  rs=1;  rw=0;  
+  46   1         P0=dat;
+  47   1         en=1;
+  48   1         _nop_();
+  49   1         en=0;
+  50   1         delay(1);   }
+  51          
+  52          void string(uchar position, uchar *s)
+  53          {  write_command(position);
+  54   1         while(*s>0)
+C51 COMPILER V9.01   1213123123                                                            05/23/2019 18:36:38 PAGE 2   
+
+  55   1         {  write_data(*s++);
+  56   2            delay(1);        
+  57   2                                    }    }
+  58          void write_sfm(uchar add,uchar dat)
+  59          {
+  60   1      write_command(0x80+add);
+  61   1      write_data(0x30+dat/10);
+  62   1      write_data(0x30+dat%10);
+  63   1      }
+  64          void main(void)
+  65          {
+  66   1      lcd_initial();
+  67   1      string(0x82,"201741055076");
+  68   1      string(0xc3,"TIME 23:30");
+  69   1      TMOD=0x01;  EA=1;ET0=1;
+  70   1      TH0=(65536-50000)/256;
+  71   1      TL0=(65536-50000)%256;
+  72   1      
+  73   1      while(1)
+  74   1      {          
+  75   2      if (P23==0)TR0=1;
+  76   2      if(P24==0){delay(1);if(P24==0)while(P24==0);minute++;}
+  77   2      if(P25==0){delay(1);if(P25==0)while(P25==0);second=second+5;if(second>=60){second=0;minute++;}}
+  78   2       write_sfm(0x48,minute);
+  79   2       write_sfm(0x4b,second);}       }
+  80          
+  81          void timer0 () interrupt 1
+  82          {  
+  83   1      TH0=(65536-50000)/256;
+  84   1      TL0=(65536-50000)%256;
+  85   1      num++;
+  86   1      if(num==20)
+  87   1      {
+  88   2      num=0;second--;
+  89   2      }
+  90   1      if(second==0)
+  91   1      {
+  92   2      second=59;minute--;
+  93   2      }
+  94   1      
+  95   1      }        
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    346    ----
+   CONSTANT SIZE    =     24    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

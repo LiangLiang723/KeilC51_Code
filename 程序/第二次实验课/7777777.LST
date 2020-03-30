@@ -1,0 +1,95 @@
+C51 COMPILER V9.01   7777777                                                               04/28/2019 20:32:55 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE 7777777
+OBJECT MODULE PLACED IN 7777777.OBJ
+COMPILER INVOKED BY: E:\KeilC51\C51\BIN\C51.EXE 7777777.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          uchar  code a[]={0xc0,0xf9,0xa4,0xb0,0x99,0x92,0x82,0xf8,0x80,0x90};
+   6          uchar   b[]={0x82,0xf8,0xc0,0x92}; uchar key;
+   7          char x;
+   8          
+   9          
+  10          void delay(uint n)
+  11          {
+  12   1      int i,j;
+  13   1      for(i=0;i<n;i++)
+  14   1         for(j=0;j<123;j++);
+  15   1      }
+  16          uchar keyscan(void)
+  17          {
+  18   1      uchar l,h;
+  19   1      P1=0xf0;
+  20   1      if((P1&0xf0)!=0xf0)
+  21   1      {
+  22   2      delay(10);
+  23   2      if((P1&0xf0)!=0xf0)
+  24   2      {
+  25   3      l=P1&0xf0;
+  26   3      P1=0x0f;
+  27   3      h=P1&0x0f;
+  28   3      while((P1&0x0f)!=0x0f);
+  29   3      return(l+h);
+  30   3      }
+  31   2      }
+  32   1      }
+  33          void abc()
+  34          {
+  35   1      int p;
+  36   1      uchar q; 
+  37   1      while(1)
+  38   1      {key=keyscan();
+  39   2      for(p=0,q=0x01;p<4;p++)
+  40   2      {       P0=b[p];
+  41   3      P2=q ;
+  42   3      q=_crol_(q,1);
+  43   3      P2=0;
+  44   3      }
+  45   2      if(key==0xde||key==0x7b)
+  46   2      {P2=0x01,x=9;P0=a[x];break;}
+  47   2      if(key==0xbd)
+  48   2      {P2=0x01;P0=a[--x];break;}
+  49   2      } }
+  50          void main(void)
+  51          {        
+  52   1      
+  53   1      
+  54   1      P2=0x01;
+  55   1      while(1)
+C51 COMPILER V9.01   7777777                                                               04/28/2019 20:32:55 PAGE 2   
+
+  56   1      {       
+  57   2      key=keyscan();
+  58   2      switch(key)
+  59   2      {
+  60   3      case 0xde:P2=0x01,x=9;P0=a[x];break;
+  61   3      case 0xbd:P2=0x01,x--,P0=a[x];break;
+  62   3      case 0x7b:P2=0x01,x=9;P0=a[x];break;
+  63   3      case 0xeb:abc();break;
+  64   3      }
+  65   2      if(x<0)
+  66   2      {x=9;P0=a[x];}
+  67   2      
+  68   2      }
+  69   1      }
+*** WARNING C291 IN LINE 32 OF 7777777.C: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    279    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

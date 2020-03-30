@@ -1,0 +1,12 @@
+#include <reg51.h>
+#dfine uchar unsigned char
+#dfine uint unsigned int
+#deine out0 p0
+#dfine out2 p2
+#dfine out1 p1
+void delay(uint n)
+{
+uint i,j;
+for(i=0;i<n;i++)
+for(j=0;j<123;j++)
+}

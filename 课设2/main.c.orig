@@ -1,0 +1,142 @@
+#include<reg52.h>
+#include <intrins.h>
+#define uchar unsigned char
+#define uint  unsigned int
+#define out P1
+
+uchar light,T;
+
+
+sbit en=P0^5;
+sbit rw=P0^6;
+sbit rs=P0^7;
+
+
+
+sbit OE=P3^6;
+sbit EOC=P3^4;
+sbit add_a=P0^0;
+sbit add_b=P0^1;
+sbit add_c=P0^2;
+sbit START=P3^3;
+sbit CLOCK=P3^5;
+void delay(uint i)
+{
+    uint x,y;
+    for(x=0; x<i; x++)
+        for(y=0; y<123; y++) ;
+}
+
+void check_busy(void)
+{   uchar dt;
+    do {
+        dt=0xff;
+        en=0;
+        rs=0;
+        rw=1;
+        en=1;
+        dt=P2;
+    }
+    while(dt&0x80);
+    en=0;
+}
+
+void write_command(uchar com)
+{   check_busy();
+    en=0;
+    rs=0;
+    rw=0;
+    P2=com;
+    en=1;
+    _nop_();
+    en=0;
+    delay(1);
+}
+
+void lcd_initial(void)
+{   write_command(0x38);
+    write_command(0x0c);
+    write_command(0x06);
+    write_command(0x01);
+    delay(1);
+}
+
+
+void write_data(uchar dat)
+{   check_busy();
+    en=0;
+    rs=1;
+    rw=0;
+    P2=dat;
+    en=1;
+    _nop_();
+    en=0;
+    delay(1);
+}
+
+void string(uchar position, uchar *s)
+{   write_command(position);
+    while(*s>0)
+    {   write_data(*s++);
+        delay(1);
+    }
+}
+
+void write_sfm(uchar add, uchar dat)
+{
+    write_command(0x80+add);
+    write_data(0x30+dat/100);
+    write_data(0x30+dat/10%10);
+    write_data(0x30+dat%10);
+}
+void send(uchar dat)
+{
+ SBUF=dat;
+ while(TI==0);
+ TI=0;
+ delay(500);
+}
+
+uchar receive(void)
+{
+uchar dat;
+ while(RI==0);
+ RI=0;
+ dat=SBUF;
+ return dat;
+}
+void main (void)
+{
+
+    lcd_initial();
+    TMOD=0x20;
+    TH1=0xfd;
+    TL1=0xfd;
+    PCON=0x00;
+    SCON=0x50;
+    TR1=1;
+	add_a=0;
+    add_b=0;
+    add_c=0;
+	string(0x80,"light:");
+    string(0xc0,"T:");
+    while(1)
+    {
+        START=0;
+        START=1;
+        START=0;
+        while(1)
+        {
+            CLOCK=!CLOCK;
+            if(EOC==1)break;
+            OE=1;
+            light=out;
+            OE=0;
+			write_sfm(0x06,light);
+            //send(light);
+           //T=receice();
+            write_sfm(0x42,T);
+        }
+    }
+
+}

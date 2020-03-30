@@ -1,0 +1,629 @@
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: E:\KeilC51\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include <intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint  unsigned int
+   5          
+   6          char m1=30,m2=5,fq=0,g=0,L,Q=5,N=5,J=0,V,S[]= {0,0,0,0};
+   7          char num,num1,num2,numm=0,numm1=0,numm2=0,h=0,Y[]= {0xbe,0xbe,0xbe,0xbe};
+   8          
+   9          
+  10          sbit en=P0^5;
+  11          sbit rw=P0^6;
+  12          sbit rs=P0^7;
+  13          sbit fmq=P3^6;
+  14          void delay(uint i)
+  15          {
+  16   1          uint x,y;
+  17   1          for(x=0; x<i; x++)
+  18   1              for(y=0; y<123; y++) ;
+  19   1      }
+  20          
+  21          void check_busy(void)
+  22          {   
+  23   1              uchar dt;
+  24   1          do {
+  25   2              dt=0xff;
+  26   2              en=0;
+  27   2              rs=0;
+  28   2              rw=1;
+  29   2              en=1;
+  30   2              dt=P2;
+  31   2          }
+  32   1          while(dt&0x80);
+  33   1          en=0;
+  34   1      }
+  35          
+  36          void write_command(uchar com)
+  37          {   
+  38   1              check_busy();
+  39   1          en=0;
+  40   1          rs=0;
+  41   1          rw=0;
+  42   1          P2=com;
+  43   1          en=1;
+  44   1          _nop_();
+  45   1          en=0;
+  46   1          delay(1);
+  47   1      }
+  48          
+  49          void lcd_initial(void)
+  50          {   
+  51   1              write_command(0x38);
+  52   1          write_command(0x0c);
+  53   1          write_command(0x06);
+  54   1          write_command(0x01);
+  55   1          delay(1);
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 2   
+
+  56   1      }
+  57          
+  58          
+  59          void write_data(uchar dat)
+  60          {   
+  61   1          check_busy();
+  62   1          en=0;
+  63   1          rs=1;
+  64   1          rw=0;
+  65   1          P2=dat;
+  66   1          en=1;
+  67   1          _nop_();
+  68   1          en=0;
+  69   1          delay(1);
+  70   1      }
+  71          
+  72          void string(uchar position, uchar *s)
+  73          {   
+  74   1              write_command(position);
+  75   1          while(*s>0)
+  76   1          {   write_data(*s++);
+  77   2              delay(1);
+  78   2          }
+  79   1      }
+  80          
+  81          void write_sfm(uchar add, uchar dat)
+  82          {
+  83   1          write_command(0x80+add);
+  84   1          write_data(0x30+dat/10);
+  85   1          write_data(0x30+dat%10);
+  86   1      }
+  87          
+  88          uchar keyscan(void)
+  89          {   
+  90   1              uchar valuel,valueh;
+  91   1          P1=0xf0;
+  92   1          if((P1&0xf0)!=0xf0)
+  93   1          {   
+  94   2                      delay(10);
+  95   2              if((P1&0xf0)!=0xf0)
+  96   2              {   
+  97   3                              valuel=P1&0xf0;
+  98   3                  P1=0x0f;
+  99   3                  valueh=P1&0x0f;
+ 100   3                  while((P1&0x0f)!=0x0f);
+ 101   3                  return(valuel+valueh);
+ 102   3              }
+ 103   2          }
+ 104   1      }
+ 105          void di(void)
+ 106          {
+ 107   1          fmq=0;
+ 108   1          delay(4);
+ 109   1          fmq=1;
+ 110   1          delay(4);
+ 111   1          fmq=0;
+ 112   1      }
+ 113          uchar mima(void)
+ 114          {
+ 115   1          uchar temp,i=0;
+ 116   1          while(i<4)
+ 117   1          {
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 3   
+
+ 118   2      
+ 119   2              temp=keyscan();
+ 120   2              switch(temp)
+ 121   2              {
+ 122   3              case 0xee:
+ 123   3                  S[i]=0xee;
+ 124   3                  i++;
+ 125   3                  string(0x8b+i,"*");
+ 126   3                  string(0x8b+i,"*");
+ 127   3                  break;
+ 128   3              case 0xde:
+ 129   3                  S[i]=0xde;
+ 130   3                  i++;
+ 131   3                  string(0x8b+i,"*");
+ 132   3                  string(0x8b+i,"*");
+ 133   3                  break;
+ 134   3              case 0xbe:
+ 135   3                  S[i]=0xbe;
+ 136   3                  i++;
+ 137   3                  string(0x8b+i,"*");
+ 138   3                  string(0x8b+i,"*");
+ 139   3                  break;
+ 140   3              case 0x7e:
+ 141   3                  S[i]=0x7e;
+ 142   3                  i++;
+ 143   3                  string(0x8b+i,"*");
+ 144   3                  string(0x8b+i,"*");
+ 145   3                  break;
+ 146   3              case 0xed:
+ 147   3                  S[i]=0xed;
+ 148   3                  i++;
+ 149   3                  string(0x8b+i,"*");
+ 150   3                  string(0x8b+i,"*");
+ 151   3                  break;
+ 152   3              case 0xdd:
+ 153   3                  S[i]=0xdd;
+ 154   3                  i++;
+ 155   3                  string(0x8b+i,"*");
+ 156   3                  string(0x8b+i,"*");
+ 157   3                  break;
+ 158   3              case 0xbd:
+ 159   3                  S[i]=0xbd;
+ 160   3                  i++;
+ 161   3                  string(0x8b+i,"*");
+ 162   3                  string(0x8b+i,"*");
+ 163   3                  break;
+ 164   3              case 0x7d:
+ 165   3                  S[i]=0x7d;
+ 166   3                  i++;
+ 167   3                  string(0x8b+i,"*");
+ 168   3                  string(0x8b+i,"*");
+ 169   3                  break;
+ 170   3              case 0xeb:
+ 171   3                  S[i]=0xeb;
+ 172   3                  i++;
+ 173   3                  string(0x8b+i,"*");
+ 174   3                  string(0x8b+i,"*");
+ 175   3                  break;
+ 176   3              case 0xdb:
+ 177   3                  S[i]=0xdb;
+ 178   3                  i++;
+ 179   3                  string(0x8b+i,"*");
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 4   
+
+ 180   3                  string(0x8b+i,"*");
+ 181   3                  break;
+ 182   3              case 0xbb:
+ 183   3                  S[i]=0xbb;
+ 184   3                  i++;
+ 185   3                  string(0x8b+i,"*");
+ 186   3                  string(0x8b+i,"*");
+ 187   3                  break;
+ 188   3              case 0x7b:
+ 189   3                  S[i]=0x7b;
+ 190   3                  i++;
+ 191   3                  string(0x8b+i,"*");
+ 192   3                  string(0x8b+i,"*");
+ 193   3                  break;
+ 194   3              case 0xe7:
+ 195   3                  S[i]=0xe7;
+ 196   3                  i++;
+ 197   3                  string(0x8b+i,"*");
+ 198   3                  string(0x8b+i,"*");
+ 199   3                  break;
+ 200   3              case 0xd7:
+ 201   3                  S[i]=0xd7;
+ 202   3                  i++;
+ 203   3                  string(0x8b+i,"*");
+ 204   3                  string(0x8b+i,"*");
+ 205   3                  break;
+ 206   3              case 0xb7:
+ 207   3                  S[i]=0xb7;
+ 208   3                  i++;
+ 209   3                  string(0x8b+i,"*");
+ 210   3                  string(0x8b+i,"*");
+ 211   3                  break;
+ 212   3              case 0x77:
+ 213   3                  S[i]=0x77;
+ 214   3                  i++;
+ 215   3                  string(0x8b+i,"*");
+ 216   3                  string(0x8b+i,"*");
+ 217   3                  break;
+ 218   3      
+ 219   3              }
+ 220   2              delay(100);
+ 221   2          }
+ 222   1          if(Y[0]==S[0]&&Y[1]==S[1]&&Y[2]==S[2]&&Y[3]==S[3]) 
+ 223   1              {
+ 224   2              string(0x8c,"P76     ");
+ 225   2              string(0x8c,"P76     ");
+ 226   2              return (0);
+ 227   2          }
+ 228   1          else 
+ 229   1              {
+ 230   2              string(0x8c,"X76     ");
+ 231   2              string(0x8c,"X76     ");
+ 232   2              return (1);
+ 233   2          }
+ 234   1      }
+ 235          void qie(void)
+ 236          {
+ 237   1          lcd_initial();
+ 238   1          while(J<5)
+ 239   1          {
+ 240   2              m1=30;
+ 241   2              m2=5;
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 5   
+
+ 242   2              fq=0;
+ 243   2              num=0;
+ 244   2              num1=0;
+ 245   2              num2=0;
+ 246   2              string(0x80,"W:30:00");
+ 247   2              string(0x87,"T00");
+ 248   2              string(0x8d,"76");
+ 249   2              string(0xc0,"R:05:00");
+ 250   2              string(0xc8,"S:");
+ 251   2              string(0xcc,":");
+ 252   2              J++;
+ 253   2          }
+ 254   1      }
+ 255          
+ 256          
+ 257          void main(void)
+ 258          {
+ 259   1          uchar key;
+ 260   1          lcd_initial();
+ 261   1          EA=1;
+ 262   1          TMOD=0x01;
+ 263   1          ET0=1;
+ 264   1          TH0=(65536-50000)/256;
+ 265   1          TR0=(65536-50000)%256;
+ 266   1          TR0=0;
+ 267   1          TMOD=0x11;
+ 268   1          ET1=1;
+ 269   1          TH1=(65536-50000)/256;
+ 270   1          TR1=(65536-50000)%256;
+ 271   1          TR1=1;
+ 272   1          string(0x80,"W:30:00");
+ 273   1          string(0x87,"T00");
+ 274   1          string(0x8d,"76");
+ 275   1          string(0xc0,"R:05:00");
+ 276   1          string(0xc8,"S:00:00");
+ 277   1          while(1)
+ 278   1          {   if(TR0==1) 
+ 279   2                      {
+ 280   3                  V=1;
+ 281   3              }
+ 282   2              if(fq>=10) 
+ 283   2                      {
+ 284   3                  J=0;
+ 285   3                  lcd_initial();
+ 286   3                  fq=0;
+ 287   3                  TR0=0;
+ 288   3                  string(0xc8,"S:");
+ 289   3                  string(0xcc,":");
+ 290   3                  while(key!=0xee) 
+ 291   3                              {
+ 292   4                      key=keyscan();
+ 293   4                      string(0x83,"WellDone");
+ 294   4                      }
+ 295   3                  lcd_initial();
+ 296   3                  while(J<3)
+ 297   3                  {   
+ 298   4                                      m1=2;
+ 299   4                      m2=1;
+ 300   4                      fq=0;
+ 301   4                      num=0;
+ 302   4                      num1=0;
+ 303   4                      num2=0;
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 6   
+
+ 304   4                      delay(10);
+ 305   4                      string(0x80,"W:30:00");
+ 306   4                      delay(2);
+ 307   4                      string(0xc0,"R:05:00");
+ 308   4                      delay(2);
+ 309   4                      string(0x87,"T00");
+ 310   4                      delay(2);
+ 311   4                      string(0x8d,"76");
+ 312   4                      delay(2);
+ 313   4                      string(0xc8,"S:");
+ 314   4                      delay(2);
+ 315   4                      string(0xcc,":");
+ 316   4                      delay(2);
+ 317   4                      J++;
+ 318   4                  }
+ 319   3              }
+ 320   2              if(num2==m1)
+ 321   2              {
+ 322   3                  while(g<20) 
+ 323   3                              {
+ 324   4                      di();
+ 325   4                      g++;
+ 326   4                  }
+ 327   3              }
+ 328   2              if(N==0)
+ 329   2              {
+ 330   3                  while(g>0) 
+ 331   3                              {
+ 332   4                      di();
+ 333   4                      g--;
+ 334   4                      delay(5);
+ 335   4                      N++;
+ 336   4                  }
+ 337   3              }
+ 338   2      
+ 339   2              key=keyscan();
+ 340   2              switch(key)
+ 341   2              {
+ 342   3              case 0xee:
+ 343   3                  TR0=1;
+ 344   3                  string(0x8c," ");
+ 345   3                  break;
+ 346   3              case 0xde:
+ 347   3                  TR0=0;
+ 348   3                  string(0x8c,"!    ");
+ 349   3                  string(0x8c,"!    ");
+ 350   3                  delay(5);
+ 351   3                  TR0=mima();
+ 352   3                  break;
+ 353   3              case 0xbe:
+ 354   3                  if(V==1)break;
+ 355   3                  m1++;
+ 356   3                  write_sfm(0x02,m1);
+ 357   3                  break;
+ 358   3              case 0x7e:
+ 359   3                  if(V==1)break;
+ 360   3                  m1--;
+ 361   3                  if(m1<5*m2)m1++;
+ 362   3                  delay(2);
+ 363   3                  if(m1<0) m1=0;
+ 364   3                  write_sfm(0x02,m1);
+ 365   3                  break;
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 7   
+
+ 366   3              case 0xed:
+ 367   3                  if(V==1)break;
+ 368   3                  m2++;
+ 369   3                  if(5*m2>m1)m2--;
+ 370   3                  delay(2);
+ 371   3                  write_sfm(0x42,m2);
+ 372   3                  break;
+ 373   3              case 0xdd:
+ 374   3                  if(V==1)break;
+ 375   3                  m2--;
+ 376   3                  if(m2<0) m2=0;
+ 377   3                  write_sfm(0x42,m2);
+ 378   3                  break;
+ 379   3              case 0xbd:
+ 380   3                  if(V==1)break;
+ 381   3                  fq++;
+ 382   3                  write_sfm(0x08,fq);
+ 383   3                  break;
+ 384   3              case 0x7d:
+ 385   3                  if(V==1)break;
+ 386   3                  fq--;
+ 387   3                  if(fq<0) fq=0;
+ 388   3                  write_sfm(0x08,fq);
+ 389   3                  break;
+ 390   3              case 0xeb:
+ 391   3                  if(V==1)break;
+ 392   3                  numm2++;
+ 393   3                  write_sfm(0x4d,numm2);
+ 394   3                  break;
+ 395   3              case 0xdb:
+ 396   3                  if(V==1)break;
+ 397   3                  numm2--;
+ 398   3                  if(numm2<0) numm2=0;
+ 399   3                  write_sfm(0x4d,numm2);
+ 400   3                  break;
+ 401   3              case 0xbb:
+ 402   3                  if(V==1)break;
+ 403   3                  h++;
+ 404   3                  write_sfm(0x4a,h);
+ 405   3                  break;
+ 406   3              case 0x7b:
+ 407   3                  if(V==1)break;
+ 408   3                  h--;
+ 409   3                  if(h<0) h=0;
+ 410   3                  write_sfm(0x4a,h);
+ 411   3                  break;
+ 412   3              case 0xe7:
+ 413   3                  if(V==1)break;
+ 414   3                  Q++;
+ 415   3                  break;
+ 416   3              case 0xd7:
+ 417   3                  if(V==1)break;
+ 418   3                  Q--;
+ 419   3                  if(Q<0) Q=0;
+ 420   3                  break;
+ 421   3              case 0xb7:
+ 422   3                  TR0=0;
+ 423   3                  J=0;
+ 424   3                  lcd_initial();
+ 425   3                  while(1) 
+ 426   3                              {
+ 427   4                      string(0xc8,"S:");
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 8   
+
+ 428   4                      string(0xcc,":");
+ 429   4                      string(0x81,"YU:05:00");
+ 430   4                      key=keyscan();
+ 431   4                      if(h>=Q) 
+ 432   4                                      {
+ 433   5                          qie();
+ 434   5                          delay(5);
+ 435   5                          TR0=1;
+ 436   5                          break;
+ 437   5                      }
+ 438   4                      if(key==0xee) 
+ 439   4                                      {
+ 440   5                          qie();
+ 441   5                          break;
+ 442   5                      }
+ 443   4                      if(key==0xbb) 
+ 444   4                                      {
+ 445   5                          h++;
+ 446   5                          write_sfm(0x4a,h);
+ 447   5                      }
+ 448   4                      if(key==0x7b) 
+ 449   4                                      {
+ 450   5                          h--;
+ 451   5                          if(h<0) h=0;
+ 452   5                          write_sfm(0x4a,h);
+ 453   5                      }
+ 454   4                      if(key==0xe7) 
+ 455   4                                      {
+ 456   5                          Q++;
+ 457   5                      }
+ 458   4                      if(key==0xd7) 
+ 459   4                                      {
+ 460   5                          Q--;
+ 461   5                          if(Q<0) Q=0;
+ 462   5                      }
+ 463   4                  }
+ 464   3                  break;
+ 465   3              case 0x77:
+ 466   3                  TR0=0;
+ 467   3                  string(0x8c,"!     ");
+ 468   3                  string(0x8c,"!    ");
+ 469   3                  delay(5);
+ 470   3                  L=mima();
+ 471   3                  J=0;
+ 472   3                  V=0;
+ 473   3                  if(L==0)
+ 474   3                  {
+ 475   4                      lcd_initial();
+ 476   4                      while(J<3)
+ 477   4                      {
+ 478   5                          m1=30;
+ 479   5                          m2=5;
+ 480   5                          fq=0;
+ 481   5                          num=0;
+ 482   5                          num1=0;
+ 483   5                          num2=0;
+ 484   5                          numm=0;
+ 485   5                          numm1=0;
+ 486   5                          numm2=0;
+ 487   5                          h=0;
+ 488   5                          delay(5);
+ 489   5                          string(0x80,"W:30:00");
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 9   
+
+ 490   5                          delay(5);
+ 491   5                          string(0x87,"T00");
+ 492   5                          delay(5);
+ 493   5                          string(0x8d,"76");
+ 494   5                          delay(5);
+ 495   5                          string(0xc0,"R:05:00");
+ 496   5                          delay(5);
+ 497   5                          string(0xc8,"S:");
+ 498   5                          delay(5);
+ 499   5                          delay(5);
+ 500   5                          string(0xcc,":");
+ 501   5                          delay(5);
+ 502   5                          J++;
+ 503   5                      }
+ 504   4                  }
+ 505   3                  else TR0=1;
+ 506   3                  break;
+ 507   3              }
+ 508   2      
+ 509   2      
+ 510   2          }
+ 511   1      
+ 512   1      }
+ 513          void    timer0 () interrupt 1
+ 514          {
+ 515   1      
+ 516   1          TH0=(65536-50000)/256;
+ 517   1          TR0=(65536-50000)%256;
+ 518   1          num++;
+ 519   1          string(0x87,"T");
+ 520   1          string(0x80,"W:");
+ 521   1          string(0x84,":");
+ 522   1          string(0x8d,"76");
+ 523   1          string(0xc0,"R:");
+ 524   1          string(0xc4,":");
+ 525   1          if(num==1) {
+ 526   2              num=0;
+ 527   2              num1++;
+ 528   2          }
+ 529   1          if(num1==60) {
+ 530   2              num1=0;
+ 531   2              num2++;
+ 532   2          }
+ 533   1          if(num2<m1)
+ 534   1          {
+ 535   2              write_sfm(0x02,m1-num2-1);
+ 536   2              write_sfm(0x05,59-num1);
+ 537   2          }
+ 538   1      
+ 539   1      
+ 540   1          else if(num2>=m1 && num2<m1+m2)
+ 541   1          {
+ 542   2      
+ 543   2              write_sfm(0x42,m1+m2-num2-1);
+ 544   2              write_sfm(0x45,59-num1);
+ 545   2      
+ 546   2      
+ 547   2          }
+ 548   1      
+ 549   1          else if(num2>=m1+m2)
+ 550   1          {
+ 551   2              write_sfm(0x02,m1);
+C51 COMPILER V9.01   MAIN                                                                  01/06/2020 09:47:54 PAGE 10  
+
+ 552   2              write_sfm(0x42,m2);
+ 553   2              num2=0;
+ 554   2              N=0;
+ 555   2              fq++;
+ 556   2              write_sfm(0x08,fq);
+ 557   2          }
+ 558   1      
+ 559   1      
+ 560   1      
+ 561   1      }
+ 562          void    timer1 () interrupt 3
+ 563          {
+ 564   1      
+ 565   1          TH1=(65536-50000)/256;
+ 566   1          TR1=(65536-50000)%256;
+ 567   1          numm++;
+ 568   1          if(numm==1) 
+ 569   1              {
+ 570   2              numm=0;
+ 571   2              numm1++;
+ 572   2          }
+ 573   1          if(numm1==60) 
+ 574   1              {
+ 575   2              numm1=0;
+ 576   2              numm2++;
+ 577   2          }
+ 578   1          if(numm2==60) 
+ 579   1              {
+ 580   2              numm2=0;
+ 581   2              h++;
+ 582   2          }
+ 583   1          string(0xcc,":");
+ 584   1          write_sfm(0x4a,h);
+ 585   1          write_sfm(0x4d,numm2);
+ 586   1          string(0xcf," ");
+ 587   1      }
+*** WARNING C291 IN LINE 104 OF MAIN.C: not every exit path returns a value
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   2283    ----
+   CONSTANT SIZE    =     97    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     24       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

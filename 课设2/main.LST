@@ -1,0 +1,168 @@
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 10:43:32 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: E:\KeilC51\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include<intrins.h>
+   3          #define uchar unsigned char
+   4          #define uint unsigned int
+   5          #define out P1 
+   6          long int light;
+   7          sbit en=P0^5;
+   8          sbit rw=P0^6;
+   9          sbit rs=P0^7;
+  10          
+  11          sbit add_a=P0^0;
+  12          sbit add_b=P0^1;
+  13          sbit add_c=P0^2;
+  14          sbit start=P3^3;
+  15          sbit eoc=P3^4;
+  16          sbit clock=P3^5;         
+  17          sbit oe=P3^6;
+  18          uchar T;
+  19          
+  20          
+  21          void delay(uint z)
+  22          {                                                                                                                                                                                          
+  23   1          uint i,j;
+  24   1          for(i=z;i>0;i--)
+  25   1              for(j=110;j>0;j--);
+  26   1      } 
+  27          void check_busy(void)
+  28          {  uchar dt;
+  29   1         do{  dt=0xff;
+  30   2              en=0;  rs=0;  rw=1;  en=1;  
+  31   2                      dt=P2;  } while(dt&0x80);
+  32   1         en=0;   }
+  33          
+  34          void write_command(uchar com)
+  35          {  check_busy();
+  36   1         en=0;  rs=0;  rw=0;  
+  37   1         P2=com;
+  38   1         en=1;
+  39   1         _nop_();
+  40   1         en=0;
+  41   1         delay(1);   }
+  42          
+  43          void lcd_initial(void)
+  44          { write_command(0x38);
+  45   1        write_command(0x0c);
+  46   1        write_command(0x06);
+  47   1        write_command(0x01);
+  48   1        delay(1);              }
+  49          
+  50          
+  51          void write_data(uchar dat)                                                                                               
+  52          {  check_busy();
+  53   1         en=0;  rs=1;  rw=0;  
+  54   1         P2=dat;
+  55   1         en=1;
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 10:43:32 PAGE 2   
+
+  56   1         _nop_();
+  57   1         en=0;
+  58   1         delay(1);   }
+  59          
+  60          void string(uchar position, uchar *s)
+  61          {  write_command(position);
+  62   1         while(*s>0)
+  63   1         {  write_data(*s++);
+  64   2            delay(1);        
+  65   2                                    }    }
+  66          void write_sfm(uchar add,uchar dat)
+  67          {
+  68   1              write_command(0x80+add);
+  69   1              write_data(0x30+dat/100%10);
+  70   1              write_data(0x30+dat/10%10);
+  71   1              write_data(0x30+dat%10);
+  72   1      }
+  73          void write_sfm1(uchar add,uchar dat)
+  74          {
+  75   1              write_command(0x80+add);
+  76   1              write_data(0x30+dat/10%10);
+  77   1              write_data(0x30+dat%10);
+  78   1      }
+  79          
+  80          void Initial_com(void)
+  81          {       
+  82   1       TMOD=0x20;//设置为定时器T1的方式2   
+  83   1       PCON=0x00; //倍增0  
+  84   1       SCON=0x50;//串口方式可发可收   
+  85   1       TH1=0xf4;//9600波特率    
+  86   1       TL1=0xf4;
+  87   1       TR1=1;//发送波特率       
+  88   1      
+  89   1      }
+  90          void send(uchar dat)
+  91          {
+  92   1       SBUF=dat;
+  93   1       while(TI==0);
+  94   1       TI=0;
+  95   1      }
+  96          
+  97          uchar receive(void)
+  98          {
+  99   1      uchar dat;
+ 100   1      while(RI==0);
+ 101   1       RI=0;
+ 102   1       dat=SBUF;
+ 103   1       return dat;
+ 104   1      }
+ 105          
+ 106          void main()
+ 107          {       
+ 108   1              
+ 109   1              lcd_initial();
+ 110   1              Initial_com();
+ 111   1              add_a=0;add_b=0;add_c=0;
+ 112   1              string(0x80,"light:"); string(0xc0,"T:");string(0xc4,".");
+ 113   1              while(1)
+ 114   1              {
+ 115   2                      start=0;start=1;start=0;
+ 116   2                      while(1)
+ 117   2                      {
+C51 COMPILER V9.01   MAIN                                                                  01/08/2020 10:43:32 PAGE 3   
+
+ 118   3                              clock=!clock;//  时钟信号必须有外部方波
+ 119   3                              if(eoc==1)break;//等待转换结束
+ 120   3                              oe=1;           //允许输出
+ 121   3                          light=out;  //暂存转换结果          
+ 122   3                              oe=0;           //关闭输出
+ 123   3                              write_sfm(0x06,light);   
+ 124   3                              send(light);
+ 125   3                              delay(5);
+ 126   3                              T=receive();                                                                                           
+             -                                                                                                                        
+             -                                                                                                                        
+             -                                                                                                                        
+             -                                                                                                                        
+             -                                                                                                                        
+             -                                                                                                                        
+             -                
+ 127   3                              if(T>=100&&T<200)
+ 128   3                              write_sfm1(0x42,T%100);
+ 129   3                              if(T>=200)
+ 130   3                              write_sfm1(0x45,T%100); 
+ 131   3      
+ 132   3                       }
+ 133   2              }       
+ 134   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    407    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      5       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

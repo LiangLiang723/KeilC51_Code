@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+E:\danpianjishuzidianlu\keshe\main.uvproj
+Project File Date:  12/30/2019
+
+<h2>Output:</h2>
+"E:\KeilC51\AStyle\bin\AStyle.exe" .\main.c
+不变    .\main.c
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main.c...
+MAIN.C(96): warning C291: not every exit path returns a value
+linking...
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_STRING?MAIN
+    CALLER1: ?C_C51STARTUP
+    CALLER2: ?PR?TIMER0?MAIN
+*** WARNING L15: MULTIPLE CALL TO SEGMENT
+    SEGMENT: ?PR?_STRING?MAIN
+    CALLER1: ?PR?TIMER0?MAIN
+    CALLER2: ?PR?TIMER1?MAIN
+Program Size: data=44.0 xdata=0 code=2656
+creating hex file from "main"...
+"main" - 0 Error(s), 3 Warning(s).
+"E:\KeilC51\AStyle.exe" .\main.c
+不变    .\main.c
